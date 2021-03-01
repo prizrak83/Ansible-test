@@ -1,0 +1,6 @@
+---
+# tasks file for add_sudo_nopass
+- name: sudo
+  template: src=nopass.j2  
+            dest=/etc/sudoers.d/{{ username }}   
+            mode=0440

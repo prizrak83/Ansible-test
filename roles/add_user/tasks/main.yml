@@ -1,0 +1,5 @@
+---
+# tasks file for add_user
+- name: create user
+  user: name={{ username }}
+        shell=/bin/bash
