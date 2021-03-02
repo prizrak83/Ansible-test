@@ -2,24 +2,21 @@
 - hosts: all
   become: yes
   gather_facts: True
+ 
+
 
   vars_prompt:
     - name: username
       prompt: "enter username"
       private: no  
     - name: keyfile
-      promt: "enter key filename"
+      prompt: "enter pub keys filename"
       private: no
 
+  vars_files:
+   - "{{keyfile}}"
  
   roles:
     - add_user
     - add_sudo_nopass
-  tasks:
-
-  - name: pubkey
-    authorized_key: user={{ username }} 
-                    key={{ item }}
-    with_items:
-     - /home/prizrak83/ansible/key1
-
+    - auth_ssh_key
