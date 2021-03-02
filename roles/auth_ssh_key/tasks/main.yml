@@ -1,0 +1,7 @@
+---
+# tasks file for auth_ssh_key
+- name: pubkey
+  authorized_key: user={{ username }}
+                  key="{{ item }}"
+  with_items: "{{ pubkeys }}"
+
